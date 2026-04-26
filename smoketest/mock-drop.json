@@ -1,0 +1,7 @@
+[
+  { "account_id": "acc_001", "account_name": "Acme Corp",     "days_idle": 0,  "sessions_last_30d": 80,  "power_users_last_30d": 12, "seats": 50 },
+  { "account_id": "acc_002", "account_name": "Beta Inc",      "days_idle": 1,  "sessions_last_30d": 175, "power_users_last_30d": 0,  "seats": 30 },
+  { "account_id": "acc_003", "account_name": "Cobalt Labs",   "days_idle": 0,  "sessions_last_30d": 150, "power_users_last_30d": 5,  "seats": 25 },
+  { "account_id": "acc_004", "account_name": "Delta Co",      "days_idle": 2,  "sessions_last_30d": 22,  "power_users_last_30d": 1,  "seats": 4  },
+  { "account_id": "acc_005", "account_name": "Epsilon Ltd",   "days_idle": 25, "sessions_last_30d": 300, "power_users_last_30d": 15, "seats": 80 }
+]

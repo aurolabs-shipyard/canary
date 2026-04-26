@@ -1,0 +1,40 @@
+source:
+  type: mock
+  mock_path: ./smoketest/mock-${CANARY_MOCK_VARIANT}.json
+  account_id_field: account_id
+  account_name_field: account_name
+
+owners:
+  type: csv
+  path: ./smoketest/owners.csv
+
+rules:
+  - id: usage-cliff
+    label: "Usage cliff (>50% drop vs rolling avg)"
+    severity: high
+    when: "sessions_last_30d < (rolling_avg_sessions_90d * 0.5)"
+    require:
+      - "rolling_avg_sessions_90d >= 20"
+    dedupe_window_days: 7
+
+  - id: power-user-loss
+    label: "Lost all power users"
+    severity: high
+    when: "power_users_last_30d == 0 && previous_power_users > 0"
+    dedupe_window_days: 14
+
+  - id: stale-account
+    label: "No activity in 14 days"
+    severity: medium
+    when: "days_since_last_active >= 14"
+    require:
+      - "seats >= 5"
+    dedupe_window_days: 14
+
+alerts:
+  channel: slack
+  mode: dry-run
+
+pilot:
+  enabled: true
+  fatigue_threshold: 5
